@@ -13,7 +13,7 @@ if __name__ == "__main__":
     parser.add_argument("-l", "--lang", dest="lang", type=str, required=True,
                         help="""The language code used for translation.
                         Use the format AA-BB where AA is the source language
-                        and BB is the result language. Example: EN-DE to translate
+                        and BB is the output language. Example: EN-DE to translate
                         from English to German.""")
     parser.add_argument("-f", "--file", dest="path", type=Path,
                         help="Read input from specified file.")
