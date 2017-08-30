@@ -10,7 +10,7 @@ Currently, the supported languages include English, German, French, Spanish, Ita
 # Usage
 Using the application is straight forward.
 The `-l LANG` argument specifies the source and output languages.
-`LANG` is the translation code in the format AA-BB where AA ist the source language and BB is the output language.
+`LANG` is the translation code in the format `AA-BB` where `AA` ist the source language and `BB` is the output language.
 For example, if you were to translate from English to German, the argument should be `-l EN-DE`.
 
 You can tell Deeplator to read input from a file using the `-f PATH` argument.
