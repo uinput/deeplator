@@ -3,7 +3,9 @@ Deeplator is a Python library and application enabling translation via [deepl.co
 
 In August 2017, DeepL released the DeepL translator.
 With unprecedented translation quality, the DeepL translator sets a new standard in neural machine translation.
-Visit [deepl.com](https://www.deepl.com/press.html) to get more information.
+Check out [deepl.com](https://www.deepl.com/press.html) to get more information.
+
+Currently, the supported languages include English, German, French, Spanish, Italian, Dutch and Polish.
 
 # Usage
 Using the application is straight forward.
