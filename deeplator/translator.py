@@ -47,3 +47,9 @@ class Translator():
         translations = resp["translations"]
         extract = lambda obj: obj["beams"][0]["postprocessed_sentence"]
         return [extract(obj) for obj in translations]
+
+    def translate_sentence(self, sentence):
+        if not sentence:
+            return ""
+
+        return self.translate_sentences([sentence])[0]
