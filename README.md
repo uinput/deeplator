@@ -20,8 +20,8 @@ For example, if you were to translate from English to German, the argument shoul
 
 |Language|Code|
 |:-------|:--:|
-|German  |DE  |
 |English |EN  |
+|German  |DE  |
 |French  |FR  |
 |Spanish |ES  |
 |Italian |IT  |
