@@ -1,9 +1,6 @@
-import requests
-
 from .jsonrpc import JSONRPCBuilder
 
 POST_URL = "https://www.deepl.com/jsonrpc"
-HEADERS = {"content-type": "application/json"}
 VALID_LANGS = ["EN", "DE", "FR", "ES", "IT", "NL", "PL"]
 
 
@@ -18,6 +15,9 @@ class Translator():
             raise ValueError("Output language not supported.")
 
     def split_into_sentences(self, text):
+        if not text:
+            return []
+
         method = "LMT_split_into_sentences"
         params = {
             "texts": [text.strip()],
@@ -26,10 +26,13 @@ class Translator():
             }
         }
         rpc = JSONRPCBuilder(method, params)
-        resp = requests.post(POST_URL, data=rpc.dumps(), headers=HEADERS)
-        return resp.json()["result"]["splitted_texts"][0]
+        resp = rpc.send(POST_URL)
+        return resp["splitted_texts"][0]
 
     def translate_sentences(self, sentences):
+        if not sentences:
+            return []
+
         jobs = [{"kind": "default", "raw_en_sentence": s} for s in sentences]
         method = "LMT_handle_jobs"
         params = {
@@ -40,7 +43,7 @@ class Translator():
             }
         }
         rpc = JSONRPCBuilder(method, params)
-        resp = requests.post(POST_URL, data=rpc.dumps(), headers=HEADERS)
-        translations = resp.json()["result"]["translations"]
+        resp = rpc.send(POST_URL)
+        translations = resp["translations"]
         extract = lambda obj: obj["beams"][0]["postprocessed_sentence"]
         return [extract(obj) for obj in translations]
