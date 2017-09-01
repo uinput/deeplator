@@ -24,12 +24,13 @@ if __name__ == "__main__":
         if len(lang) != 2:
             raise Exception("Invalid translation Code.")
     else:
-        print("You did not specify a translation code.")
         langs = ",".join(VALID_LANGS)
+        print("You did not specify a translation code.")
+        print("Available languages are {}.".format(langs))
         lang = []
-        lang_tmp = str(input("Source language [{}]: ".format(langs)))
+        lang_tmp = str(input("Source language: "))
         lang.append(lang_tmp)
-        lang_tmp = str(input("Output language [{}]: ".format(langs)))
+        lang_tmp = str(input("Output language: "))
         lang.append(lang_tmp)
 
     t = Translator(lang[0], lang[1])
@@ -41,8 +42,9 @@ if __name__ == "__main__":
         print("Enter the text to be translated. Use Ctrl+D to exit.")
         lines = sys.stdin.readlines()
         text = "".join(lines)
+        print("-" * 16)
 
     sentences = t.split_into_sentences(text)
     translations = t.translate_sentences(sentences)
-    print("-" * 16)
-    print(translations)
+    for sentence in translations:
+        print(sentence)
