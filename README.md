@@ -1,5 +1,5 @@
 # About
-Deeplator is a Python library and application enabling translation via the DeepL Translator available at [deepl.com](https://www.deepl.com/translator).
+Deeplator is a Python library and application enabling translation via the DeepL translator available at [deepl.com](https://www.deepl.com/translator).
 
 In August 2017, DeepL released the DeepL translator.
 With unprecedented translation quality, the DeepL translator sets a new standard in neural machine translation.
