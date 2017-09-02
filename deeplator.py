@@ -8,7 +8,7 @@ from deeplator import Translator, VALID_LANGS
 
 if __name__ == "__main__":
     parser = ArgumentParser(
-        description="Deeplator is an application enabling translation via the DeepL Translator."
+        description="Deeplator is an application enabling translation via the DeepL translator."
     )
     parser.add_argument("-l", "--lang", dest="lang", type=str,
                         help="""The translation code used for translation.
