@@ -4,7 +4,7 @@ import sys
 from argparse import ArgumentParser
 from pathlib import Path
 
-from deeplator.translator import Translator, VALID_LANGS
+from deeplator import Translator, VALID_LANGS
 
 if __name__ == "__main__":
     parser = ArgumentParser(

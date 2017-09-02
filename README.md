@@ -9,7 +9,7 @@ Check out [deepl.com](https://www.deepl.com/press.html) to get more information.
 
 Currently, the supported languages include English, German, French, Spanish, Italian, Dutch and Polish.
 
-## Usage
+## Application Usage
 Using the application is straight forward.
 Basically, you just need to launch `deeplator.py`.
 
@@ -31,3 +31,30 @@ For example, if you were to translate from English to German, the argument shoul
 You can tell Deeplator to read input from a file using the `-f PATH` argument.
 When ommitted, Deeplator will read input from `stdin` instead.
 Remember to exit the multiline input with `Ctrl+D`.
+
+## Library Usage
+The Deeplator library was written for Python 3.
+
+### Single Sentence
+```python
+from deeplator import Translator
+
+t = Translator("EN", "DE")
+sentence = "Hello world."
+translation = t.translate_sentence(sentence)
+print(translation)
+```
+
+### Multiple Sentences
+The DeepL translator can only translate one sentence at a time.
+To translate multiple sentences, you have to split them first.
+Fortunately, the DeepL API supports this functionality.
+```python
+from deeplator import Translator
+
+t = Translator("EN", "DE")
+paragraph = "Hello world. DeepL is awesome."
+sentences = t.split_into_sentences(paragraph)
+translations = t.translate_sentences(sentences)
+print(translations)
+```
