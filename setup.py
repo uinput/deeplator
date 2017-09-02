@@ -4,11 +4,20 @@ from distutils.core import setup
 
 setup(
     name="deeplator",
-    version="0.1",
-    description="Deeplator is a library enabling translation via the DeepL translator.",
+    version="0.0.1",
+    description="Wrapper for DeepL translator.",
+    long_description="Deeplator is a library enabling translation via the DeepL translator.",
     author="uinput",
     author_email="uinput@users.noreply.github.com",
+    license="MIT",
     url="https://github.com/uinput/deeplator",
     keywords=["deepl", "translation", "translate", "language"],
-    py_modules=["deeplator"]
+    python_requires=">=3",
+    py_modules=["deeplator"],
+    classifiers=[
+        "Development Status :: 4 - Beta",
+        "Intended Audience :: Developers",
+        "License :: OSI Approved :: MIT License",
+        "Programming Language :: Python :: 3"
+    ]
 )
