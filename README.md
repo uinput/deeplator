@@ -11,7 +11,7 @@ Currently, the supported languages include English, German, French, Spanish, Ita
 
 ## Usage
 Using the application is straight forward.
-Basically, you just need to start `deeplator.py`.
+Basically, you just need to launch `deeplator.py`.
 
 The `-l LANG` argument specifies the source and output languages.
 `LANG` is the translation code in the format `AA-BB` where `AA` ist the source language code and `BB` is the output language code.
@@ -31,6 +31,3 @@ For example, if you were to translate from English to German, the argument shoul
 You can tell Deeplator to read input from a file using the `-f PATH` argument.
 When ommitted, Deeplator will read input from `stdin` instead.
 Remember to exit the multiline input with `Ctrl+D`.
-
-## Dependencies
-- Requests

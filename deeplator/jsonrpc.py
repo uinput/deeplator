@@ -1,5 +1,5 @@
 import json
-import requests
+import urllib.request as request
 
 JSONRPC_VERSION = "2.0"
 HEADERS = {"content-type": "application/json"}
@@ -21,11 +21,13 @@ class JSONRPCBuilder():
 
     def dumps(self):
         data = self.dump()
-        return json.dumps(data)
+        data_str = json.dumps(data)
+        return data_str.encode("utf-8")
 
     def send(self, url):
-        resp = requests.post(url, data=self.dumps(), headers=HEADERS)
-        resp = resp.json()
+        req = request.Request(url, data=self.dumps(), headers=HEADERS)
+        data_str = request.urlopen(req).read()
+        resp = json.loads(data_str)
         if "result" in resp:
             return resp["result"]
         else:
