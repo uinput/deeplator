@@ -45,7 +45,7 @@ class Translator():
         rpc = JSONRPCBuilder(method, params)
         resp = rpc.send(POST_URL)
         translations = resp["translations"]
-        extract = lambda obj: obj["beams"][0]["postprocessed_sentence"]
+        extract = lambda obj: obj["beams"][0]["postprocessed_sentence"] if len(obj["beams"]) > 0 else '<empty-translation>'
         return [extract(obj) for obj in translations]
 
     def translate_sentence(self, sentence):
