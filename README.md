@@ -9,11 +9,14 @@ Check out [deepl.com](https://www.deepl.com/press.html) to get more information.
 
 Currently, the supported languages include English, German, French, Spanish, Italian, Dutch and Polish.
 
+If you're coding in PHP instead, [DeepLy](https://github.com/chriskonnertz/DeepLy) might be the right choice.
+
 ## Application Usage
 Using the application is straight forward.
 Basically, you just need to launch `deeplator.py`.
 
 The `-l LANG` argument specifies the source and output languages.
+If omitted, the application will ask for the languages interactively.
 `LANG` is the translation code in the format `AA-BB` where `AA` ist the source language code and `BB` is the output language code.
 See the table below for all language codes.
 For example, if you were to translate from English to German, the argument should be `-l EN-DE`.
