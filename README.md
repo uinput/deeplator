@@ -46,15 +46,13 @@ print(translation)
 ```
 
 ### Multiple Sentences
-The DeepL translator can only translate one sentence at a time.
-To translate multiple sentences, you have to split them first.
-Fortunately, the DeepL API supports this functionality.
+In case it is unknown if the input string consists of multiple sentences, use the `translate_sentences` method.
+It will split the passed argument into sentences first and translate each sentence by its own.
 ```python
 from deeplator import Translator
 
 t = Translator("EN", "DE")
 paragraph = "Hello world. DeepL is awesome."
-sentences = t.split_into_sentences(paragraph)
-translations = t.translate_sentences(sentences)
+translations = t.translate_sentences(paragraph)
 print(translations)
 ```
