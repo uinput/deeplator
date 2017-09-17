@@ -1,3 +1,5 @@
+from urllib.error import URLError
+
 from .jsonrpc import JSONRPCBuilder
 
 POST_URL = "https://www.deepl.com/jsonrpc"
@@ -31,6 +33,8 @@ class Translator():
 
         :param text: A string to be split.
         :returns: A list of sentences with type string.
+        :raises TranslationError: If there was an exception during the
+        translation.
         """
 
         if not text:
@@ -43,8 +47,8 @@ class Translator():
                 "lang_user_selected": self.src_lang
             }
         }
-        rpc = JSONRPCBuilder(method, params)
-        resp = rpc.send(POST_URL)
+
+        resp = _send_jsonrpc(method, params)
         return resp["splitted_texts"][0]
 
     def translate_sentences(self, sentences):
@@ -57,6 +61,8 @@ class Translator():
         :returns: A list of translated strings.
         :raises LengthLimitExceeded: If the length of a string exeeds the
         length limit of the DeepL API, an exception is raised.
+        :raises TranslationError: If there was an exception during the
+        translation.
         """
 
         # catch None, empty string and empty list
@@ -75,8 +81,7 @@ class Translator():
             }
         }
 
-        rpc = JSONRPCBuilder(method, params)
-        resp = rpc.send(POST_URL)
+        resp = _send_jsonrpc(method, params)
         translations = resp["translations"]
 
         def extract(obj):
@@ -98,6 +103,8 @@ class Translator():
         :returns: The translated string.
         :raises LengthLimitExceeded: If the length of the string exeeds the
         length limit of the DeepL API, an exception is raised.
+        :raises TranslationError: If there was an exception during the
+        translation.
         """
 
         if not sentence:
@@ -118,8 +125,24 @@ class Translator():
         return jobs
 
 
+def _send_jsonrpc(method, params):
+    try:
+        rpc = JSONRPCBuilder(method, params)
+        return rpc.send(POST_URL)
+    except URLError as e:
+        raise TranslationError(e.reason)
+
+
 class LengthLimitExceeded(Exception):
     pass
+
+
+class TranslationError(Exception):
+    def __init__(self, reason):
+        self.reason = reason
+
+    def __repr__(self):
+        return "TranslationError: " + self.reason
 
 
 class EmptyTranslation():
