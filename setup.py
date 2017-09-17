@@ -1,10 +1,10 @@
 #!/usr/bin/env python3
 
-from distutils.core import setup
+from setuptools import setup
 
 setup(
     name="deeplator",
-    version="0.0.1",
+    version="0.0.2",
     description="Wrapper for DeepL translator.",
     long_description="Deeplator is a library enabling translation via the DeepL translator.",
     author="uinput",
