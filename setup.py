@@ -13,6 +13,7 @@ setup(
     url="https://github.com/uinput/deeplator",
     keywords=["deepl", "translation", "translate", "language"],
     python_requires=">=3",
+    packages=["deeplator"],
     py_modules=["deeplator"],
     classifiers=[
         "Development Status :: 4 - Beta",
