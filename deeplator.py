@@ -39,10 +39,10 @@ if __name__ == "__main__":
         with open(args.path, "r") as src_file:
             text = src_file.read()
     else:
-        print("Enter the text to be translated. Use Ctrl+D to exit.")
+        print("Enter the text to be translated. Use Ctrl+D to exit.", file=sys.stderr)
         lines = sys.stdin.readlines()
         text = "".join(lines)
-        print("-" * 16)
+        print("-" * 16, file=sys.stderr)
 
     sentences = t.split_into_sentences(text)
     translations = t.translate_sentences(sentences)
