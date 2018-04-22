@@ -27,7 +27,7 @@ class JSONRPCBuilder():
     def send(self, url):
         req = request.Request(url, data=self.dumps(), headers=HEADERS)
         data_str = request.urlopen(req).read()
-        resp = json.loads(data_str)
+        resp = json.loads(data_str.decode("utf-8"))
         if "result" in resp:
             return resp["result"]
         else:
