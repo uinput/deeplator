@@ -2,7 +2,7 @@ from urllib.error import URLError
 
 from .jsonrpc import JSONRPCBuilder
 
-POST_URL = "https://www.deepl.com/jsonrpc"
+POST_URL = "https://www2.deepl.com/jsonrpc"
 VALID_LANGS = ["EN", "DE", "FR", "ES", "IT", "NL", "PL"]
 LENGTH_LIMIT = 5000
 
