@@ -17,9 +17,9 @@ Basically, you just need to launch `deeplator.py`.
 
 The `-l LANG` argument specifies the source and output languages.
 If omitted, the application will ask for the languages interactively.
-`LANG` is the translation code in the format `AA-BB` where `AA` ist the source language code and `BB` is the output language code.
+`LANG` is the translation code in the format `AA-BB` where `AA` ist the source language code and `BB` is the output language code. 
 See the table below for all language codes.
-For example, if you were to translate from English to German, the argument should be `-l EN-DE`.
+For example, if you were to translate from English to German, the argument should be `-l EN-DE`. You can also tell DeepL to automatically detect the language of the source text by supplying `AUTO` as the source language (e.g. `-l AUTO-DE`).
 
 |Language|Code|
 |:-------|:--:|
