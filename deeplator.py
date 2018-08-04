@@ -41,10 +41,12 @@ if __name__ == "__main__":
         with open(args.path, "r") as src_file:
             text = src_file.read()
     else:
-        if not args.silent: print("Enter the text to be translated. Use Ctrl+D to exit.", file=sys.stderr)
+        if not args.silent:
+            print("Enter the text to be translated. Use Ctrl+D to exit.", file=sys.stderr)
         lines = sys.stdin.readlines()
         text = "".join(lines)
-        if not args.silent: print("-" * 16, file=sys.stderr)
+        if not args.silent:
+            print("-" * 16, file=sys.stderr)
 
     sentences = t.split_into_sentences(text)
     translations = t.translate_sentences(sentences)
