@@ -4,7 +4,7 @@ from setuptools import setup
 
 setup(
     name="deeplator",
-    version="0.0.5",
+    version="0.0.6",
     description="Wrapper for DeepL translator.",
     long_description="Deeplator is a library enabling translation via the DeepL translator.",
     author="uinput",
