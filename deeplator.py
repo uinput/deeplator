@@ -17,6 +17,8 @@ if __name__ == "__main__":
                         translate from English to German.""")
     parser.add_argument("-f", "--file", dest="path", type=Path,
                         help="Read input from specified file.")
+    parser.add_argument("-s", "--silent", dest="silent", action='store_true',
+                        help="Print only the translation.")
     args = parser.parse_args()
 
     if args.lang:
@@ -39,10 +41,12 @@ if __name__ == "__main__":
         with open(args.path, "r") as src_file:
             text = src_file.read()
     else:
-        print("Enter the text to be translated. Use Ctrl+D to exit.", file=sys.stderr)
+        if not args.silent:
+            print("Enter the text to be translated. Use Ctrl+D to exit.", file=sys.stderr)
         lines = sys.stdin.readlines()
         text = "".join(lines)
-        print("-" * 16, file=sys.stderr)
+        if not args.silent:
+            print("-" * 16, file=sys.stderr)
 
     sentences = t.split_into_sentences(text)
     translations = t.translate_sentences(sentences)
