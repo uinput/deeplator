@@ -3,8 +3,9 @@ from urllib.error import URLError
 from .jsonrpc import JSONRPCBuilder
 
 POST_URL = "https://www2.deepl.com/jsonrpc"
-SOURCE_LANGS = ["AUTO", "EN", "DE", "FR", "ES", "IT", "NL", "PL"]
-TARGET_LANGS = SOURCE_LANGS[1:]
+AUTO_LANG = "AUTO"
+TARGET_LANGS = ["EN", "DE", "FR", "ES", "IT", "NL", "PL"]
+SOURCE_LANGS = TARGET_LANGS + [AUTO_LANG]
 LENGTH_LIMIT = 5000
 
 
@@ -46,7 +47,7 @@ class Translator():
             "texts": [text.strip()],
             "lang": {}
         }
-        if self.src_lang != SOURCE_LANGS[0]:
+        if self.src_lang != AUTO_LANG:
             params["lang"]["lang_user_selected"] = self.src_lang
 
         resp = _send_jsonrpc(method, params)
@@ -80,7 +81,7 @@ class Translator():
                 "target_lang": self.dst_lang
             }
         }
-        if self.src_lang != SOURCE_LANGS[0]:
+        if self.src_lang != AUTO_LANG:
             params["lang"]["source_lang"] = self.src_lang
 
         resp = _send_jsonrpc(method, params)
