@@ -3,7 +3,9 @@ from urllib.error import URLError
 from .jsonrpc import JSONRPCBuilder
 
 POST_URL = "https://www2.deepl.com/jsonrpc"
-VALID_LANGS = ["EN", "DE", "FR", "ES", "IT", "NL", "PL"]
+AUTO_LANG = "AUTO"
+TARGET_LANGS = ["EN", "DE", "FR", "ES", "IT", "NL", "PL"]
+SOURCE_LANGS = TARGET_LANGS + [AUTO_LANG]
 LENGTH_LIMIT = 5000
 
 
@@ -20,9 +22,9 @@ class Translator():
         self.src_lang = src_lang.upper()
         self.dst_lang = dst_lang.upper()
 
-        if self.src_lang not in VALID_LANGS:
+        if self.src_lang not in SOURCE_LANGS:
             raise ValueError("Input language not supported.")
-        if self.dst_lang not in VALID_LANGS:
+        if self.dst_lang not in TARGET_LANGS:
             raise ValueError("Output language not supported.")
 
         self.check_length_limit = check_length_limit
@@ -43,10 +45,10 @@ class Translator():
         method = "LMT_split_into_sentences"
         params = {
             "texts": [text.strip()],
-            "lang": {
-                "lang_user_selected": self.src_lang
-            }
+            "lang": {}
         }
+        if self.src_lang != AUTO_LANG:
+            params["lang"]["lang_user_selected"] = self.src_lang
 
         resp = _send_jsonrpc(method, params)
         return resp["splitted_texts"][0]
@@ -76,10 +78,11 @@ class Translator():
         params = {
             "jobs": jobs,
             "lang": {
-                "source_lang": self.src_lang,
                 "target_lang": self.dst_lang
             }
         }
+        if self.src_lang != AUTO_LANG:
+            params["lang"]["source_lang"] = self.src_lang
 
         resp = _send_jsonrpc(method, params)
         translations = resp["translations"]

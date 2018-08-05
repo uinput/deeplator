@@ -1,1 +1,1 @@
-from .translator import Translator, VALID_LANGS
+from .translator import Translator, SOURCE_LANGS

@@ -4,7 +4,7 @@ import sys
 from argparse import ArgumentParser
 from pathlib import Path
 
-from deeplator import Translator, VALID_LANGS
+from deeplator import Translator, SOURCE_LANGS
 
 if __name__ == "__main__":
     parser = ArgumentParser(
@@ -26,7 +26,7 @@ if __name__ == "__main__":
         if len(lang) != 2:
             raise Exception("Invalid translation Code.")
     else:
-        langs = ",".join(VALID_LANGS)
+        langs = ",".join(SOURCE_LANGS)
         print("You did not specify a translation code.")
         print("Available languages are {}.".format(langs))
         lang = []
