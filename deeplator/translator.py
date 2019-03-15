@@ -4,7 +4,7 @@ from .jsonrpc import JSONRPCBuilder
 
 POST_URL = "https://www2.deepl.com/jsonrpc"
 AUTO_LANG = "AUTO"
-TARGET_LANGS = ["EN", "DE", "FR", "ES", "IT", "NL", "PL"]
+TARGET_LANGS = ["EN", "DE", "FR", "ES", "IT", "NL", "PL", "PT", "RU"]
 SOURCE_LANGS = TARGET_LANGS + [AUTO_LANG]
 LENGTH_LIMIT = 5000
 

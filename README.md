@@ -22,15 +22,17 @@ See the table below for all language codes.
 For example, if you were to translate from English to German, the argument should be `-l EN-DE`.
 You can also tell DeepL to automatically detect the language of the source text by supplying `AUTO` as the source language (e.g. `-l AUTO-DE`).
 
-|Language|Code|
-|:-------|:--:|
-|English |EN  |
-|German  |DE  |
-|French  |FR  |
-|Spanish |ES  |
-|Italian |IT  |
-|Dutch   |NL  |
-|Polish  |PL  |
+|Language   |Code|
+|:----------|:--:|
+|German     |DE  |
+|English    |EN  |
+|Spanish    |ES  |
+|French     |FR  |
+|Italian    |IT  |
+|Dutch      |NL  |
+|Polish     |PL  |
+|Portuguese |PT  |
+|Russian    |RU  |
 
 You can tell Deeplator to read input from a file using the `-f PATH` argument.
 When ommitted, Deeplator will read input from `stdin` instead.
